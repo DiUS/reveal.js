@@ -1,0 +1,42 @@
+@import "dius-base";
+
+.reveal.slide:not(.overview) {
+
+    background: $diusGrey;
+
+    .slide-background[data-background-hash^='#'] {
+        &:before {
+            content:'';
+            position: fixed;
+            height: 100%;
+            width: 0.7em;
+            background-image: url('dius/lighten.png');
+            background-repeat: no-repeat;
+            background-position: 0% 0%;
+            background-size: 0.8em 15%;
+        }
+
+        &:after {
+            content:'';
+            position: fixed;
+            height: 100%;
+            left: 0.7em;
+            width: calc(100% - 0.7em);
+            background: white;
+        }
+    }
+
+    .slides {
+        background-image: url('dius/logo_icon_colour_transparentBG.png');
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        background-size: 3em;
+    }
+
+    img {
+        border: 0px;
+        box-shadow: none;
+        padding: 8px;
+    }
+
+}

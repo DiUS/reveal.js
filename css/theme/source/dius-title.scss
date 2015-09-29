@@ -1,0 +1,23 @@
+@import "dius-base";
+
+.reveal.slide:not(.overview) {
+    background: $diusNavy;
+
+    .slides {
+        background-image: url('dius/logo_reverse_colour_tag.png'), url('dius/logo_bars.png');
+        background-repeat: no-repeat, no-repeat;
+        background-position: 0% 100%, 100% 0%;
+        background-size: 13em, auto 100%;
+
+        h1 {
+            color: white;
+            text-align: left;
+        }
+
+        h2 {
+            color: #838688;
+            text-align: left;
+        }
+
+    }
+}

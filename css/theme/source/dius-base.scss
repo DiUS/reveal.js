@@ -1,0 +1,68 @@
+// primary colors
+$diusNavy: #21366C;
+$diusLightNavy: #314B84;
+$diusDarkNavy: #192854;
+
+$diusSkyBlue: #00B6F0;
+$diusLightSkyBlue: #3DC5EC;
+$diusDarkSykBlue: #5894CE;
+
+$diusGrey: #A3A9AC;
+$diusLightGrey: #CBCFD1;
+$diusDarkGrey: #838688;
+
+// secondary colors
+$diusSecondaryBlue: #2E7DE1;
+$diusSecondaryLightBlue: #5894CE;
+$diusSecondaryDarkBlue: #1B64A5;
+
+$diusSecondaryGreen: #A2B842;
+$diusSecondaryLightGreen: #B9C353;
+$diusSecondaryDarkGreen: #8A9939;
+
+$diusSecondaryYellow: #E2CC00;
+$diusSecondaryLightYellow: #F1DF60;
+$diusSecondaryDarkYellow: #B09D32;
+
+$diusSecondaryOrange: #FF8300;
+$diusSecondaryLightOrange: #F39642;
+$diusSecondaryDarkOrange: #C66528;
+
+$diusSecondaryLilac: #B095DA;
+$diusSecondaryLightLilac: #C3B0D5;
+$diusSecondaryDarkLilac: #836EAF;
+
+$diusSecondaryAqua: #3FBDA9;
+$diusSecondaryLightAqua: #76CABC;
+$diusSecondaryDarkAqua: #319682;
+
+$diusSecondaryBrown: #99593D;
+$diusSecondaryLightBrown: #AF6C54;
+$diusSecondaryDarkBrown: #773E2A;
+
+$diusSecondaryRed: #A41E22;
+$diusSecondaryLightRed: #C12834;
+$diusSecondaryDarkRed: #76141B;
+
+$diusSecondaryGrey: #545759;
+$diusSecondaryLightGrey: #838688;
+$diusSecondaryDarkGrey: #353737;
+
+@import "../template/mixins";
+@import "../template/settings";
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic");
+
+$backgroundColor: white;
+$mainFont: 'Open Sans', sans-serif;
+$mainFontSize: 28px;
+$mainColor: $diusDarkGrey;
+$headingFont: 'Roboto', sans-serif;
+$headingColor: $diusNavy;
+$headingTextTransform: none;
+$linkColor: $diusSecondaryBlue;
+$linkColorHover: $diusSecondaryLightBlue;
+$selectionBackgroundColor: $diusSecondaryLightBlue;
+
+@import "../template/theme";
