@@ -1,0 +1,138 @@
+// primary colors
+$diusNavy: #21366C;
+$diusLightNavy: #314B84;
+$diusDarkNavy: #192854;
+
+$diusSkyBlue: #00B6F0;
+$diusLightSkyBlue: #3DC5EC;
+$diusDarkSykBlue: #5894CE;
+
+$diusGrey: #A3A9AC;
+$diusLightGrey: #CBCFD1;
+$diusDarkGrey: #838688;
+
+// secondary colors
+$diusSecondaryBlue: #2E7DE1;
+$diusSecondaryLightBlue: #5894CE;
+$diusSecondaryDarkBlue: #1B64A5;
+
+$diusSecondaryGreen: #A2B842;
+$diusSecondaryLightGreen: #B9C353;
+$diusSecondaryDarkGreen: #8A9939;
+
+$diusSecondaryYellow: #E2CC00;
+$diusSecondaryLightYellow: #F1DF60;
+$diusSecondaryDarkYellow: #B09D32;
+
+$diusSecondaryOrange: #FF8300;
+$diusSecondaryLightOrange: #F39642;
+$diusSecondaryDarkOrange: #C66528;
+
+$diusSecondaryLilac: #B095DA;
+$diusSecondaryLightLilac: #C3B0D5;
+$diusSecondaryDarkLilac: #836EAF;
+
+$diusSecondaryAqua: #3FBDA9;
+$diusSecondaryLightAqua: #76CABC;
+$diusSecondaryDarkAqua: #319682;
+
+$diusSecondaryBrown: #99593D;
+$diusSecondaryLightBrown: #AF6C54;
+$diusSecondaryDarkBrown: #773E2A;
+
+$diusSecondaryRed: #A41E22;
+$diusSecondaryLightRed: #C12834;
+$diusSecondaryDarkRed: #76141B;
+
+$diusSecondaryGrey: #545759;
+$diusSecondaryLightGrey: #838688;
+$diusSecondaryDarkGrey: #353737;
+
+@import "../template/mixins";
+@import "../template/settings";
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic");
+
+$backgroundColor: white;
+$mainFont: 'Open Sans', sans-serif;
+$mainFontSize: 28px;
+$mainColor: $diusDarkGrey;
+$headingFont: 'Roboto', sans-serif;
+$headingColor: $diusNavy;
+$headingTextTransform: none;
+$linkColor: $diusSecondaryBlue;
+$linkColorHover: $diusSecondaryLightBlue;
+$selectionBackgroundColor: $diusSecondaryLightBlue;
+
+@import "../template/theme";
+
+html.dius-body body {
+    background: $diusGrey; // default colour
+
+    .slide-background {
+        &:before {
+            content:'';
+            position: fixed;
+            height: 100%;
+            width: 0.7em;
+            background-image: url('dius/lighten.png');
+            background-repeat: no-repeat;
+            background-position: 0% 0%;
+            background-size: 0.8em 15%;
+        }
+        &:after {
+            content:'';
+            position: fixed;
+            height: 100%;
+            left: 0.7em;
+            width: calc(100% - 0.7em);
+            background: white;
+        }
+    }
+
+    .slides {
+        background-image: url('dius/logo_icon_colour_transparentBG.png');
+        background-repeat: no-repeat;
+        background-position: 100% 100%;
+        background-size: 3em;
+    }
+
+    img {
+        border: 0px;
+        box-shadow: none;
+        padding: 8px;
+    }
+}
+
+html.dius-title body {
+    background: $diusNavy; // default colour
+
+    .slides {
+        background-image: url('dius/logo_reverse_colour_tag.png'), url('dius/logo_bars.png');
+        background-repeat: no-repeat, no-repeat;
+        background-position: 0% 100%, 100% 0%;
+        background-size: 13em, auto 100%;
+    }
+
+    h1 {
+        color: white;
+        text-align: left;
+    }
+
+    h2 {
+        color: #838688;
+        text-align: left;
+    }
+}
+
+html.dius-navy   body { background: $diusNavy;            }
+html.dius-blue   body { background: $diusSecondaryBlue;   }
+html.dius-green  body { background: $diusSecondaryGreen;  }
+html.dius-yellow body { background: $diusSecondaryYellow; }
+html.dius-orange body { background: $diusSecondaryOrange; }
+html.dius-lilac  body { background: $diusSecondaryLilac;  }
+html.dius-aqua   body { background: $diusSecondaryAqua;   }
+html.dius-brown  body { background: $diusSecondaryBrown;  }
+html.dius-red    body { background: $diusSecondaryRed;    }
+html.dius-grey   body { background: $diusSecondaryGrey;   }

@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/dius-body.css" id="theme">
+    <link rel="stylesheet" href="css/theme/dius.css" id="theme">
     <link rel="stylesheet" href="lib/css/zenburn.css">
     <script>
       var link = document.createElement( 'link' );
@@ -24,7 +24,7 @@
     <div class="reveal">
 
       <div class="slides">
-        <section data-theme="dius-title" data-markdown data-background="#21366C">
+        <section data-markdown data-state="dius-title">
           <script type="text/template">
             # HTML slides
 
@@ -32,7 +32,7 @@
           </script>
         </section>
 
-        <section data-markdown data-background="#2E7DE1">
+        <section data-markdown data-state="dius-body dius-blue">
           <script type="text/template">
             ## Vanilla reveal.js
 
@@ -44,13 +44,13 @@
           </script>
         </section>
 
-        <section data-markdown data-background="#2E7DE1">
+        <section data-markdown data-state="dius-body dius-blue">
           <script type="text/template">
             ## Background colors
 
             Background colours are applied to the sidebar on the left with:
 
-                data-markdown data-background="#2E7DE1"
+                data-state="dius-body dius-blue"
 
             If you don't specify the colors, it uses DiUS Grey
           </script>
@@ -62,30 +62,30 @@
 
             You can also set background images with:
 
-                data-markdown data-background="image.jpg"
+                data-background="image.jpg"
 
             Note missing sidebar on the left
           </script>
         </section>
 
-        <section data-theme="dius-title" data-markdown data-background="#A2B842">
+        <section data-markdown data-state="dius-title dius-green">
           <script type="text/template">
             # Sections
           </script>
         </section>
 
-        <section data-markdown data-background="#A2B842">
+        <section data-markdown data-state="dius-body dius-green">
           <script type="text/template">
             ## Sections
 
-            Create a section with `data-theme="dius-title"`
+            Create a section with `data-state="dius-title"`
 
             I suggest coloring all slides of the same section similarly
           </script>
         </section>
 
         <section>
-          <section data-theme="dius-title" data-markdown data-background="#E2CC00">
+          <section data-markdown data-state="dius-title dius-yellow">
             <script type="text/template">
               # Vertical sections
 
@@ -93,7 +93,7 @@
             </script>
           </section>
 
-          <section data-markdown data-background="#E2CC00">
+          <section data-markdown data-state="dius-body dius-yellow">
             <script type="text/template">
               ## Because I can
 
@@ -102,7 +102,7 @@
           </section>
         </section>
 
-        <section data-theme="dius-title" data-markdown data-background="#21366C">
+        <section data-markdown data-state="dius-title">
           <script type="text/template">
             # Enjoy!
           </script>
@@ -112,6 +112,6 @@
 
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="js/configuration.js"></script>
   </body>
 </html>
