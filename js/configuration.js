@@ -1,7 +1,7 @@
 Reveal.initialize({
 
-  width: 960,
-  height: 700,
+  width: 1200,
+  height: 900,
   margin: 0.1,
   minScale: 0.2,
   maxScale: 1.5,

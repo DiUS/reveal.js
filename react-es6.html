@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/dius.css" id="theme">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+    <!--[if lt IE 9]>
+      <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="reveal">
+
+      <div class="slides">
+        <section data-state="dius-title">
+          <h2>Dean & Voon's excellent adventure in React and ES6</h2>
+        </section>
+
+        <section data-state="dius-body dius-blue" data-markdown>
+          <script type="text/template">
+            ## React + ES6
+            Let's talk about cool stuff in React and ES6 (and beyond)
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-blue" data-markdown>
+          <script type="text/template">
+            ## React with JSX syntax
+            JSX looks like HTML, transpiles to JS
+            ```html
+            <MyComponent option={1} parameter={2}>
+              Child contents
+            </MyComponent>
+            ```
+            becomes
+            ```js
+            React.createElement(
+              MyComponent,
+              {option: 1, parameter: 2},
+              'Child contents'
+            )
+            ```
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-blue" data-markdown>
+          <script type="text/template">
+            ## JSX convention
+            Capitalised name, use React component, else DOM element
+            ```html
+            <div>
+              Lorem ipsum
+            </div>
+            ```
+            becomes
+            ```js
+            React.createElement(
+              'div',
+              {},
+              'Lorem ipsum'
+            )
+            ```
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-blue" data-markdown>
+          <script type="text/template">
+            ## ES6
+            * Also known as ECMAScript 2015
+            * Has lots of stuff, but focus on features that complement JSX
+            * Also use other draft/proposed capabilities:
+              * eg. object rest + spread [https://github.com/sebmarkbage/ecmascript-rest-spread]
+              * use with caution, as it may change!
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## Arrows
+            ES5
+            ```js
+            var increment = function(x) {
+              return x+1
+            }
+            ```
+
+            ES6
+            ```js
+            const increment = x => x+1
+            ```
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## Arrows in JSX
+            JSX + ES5
+            ```js
+            var MyComponent = function(props) {
+              return (
+                <Greeter>
+                  Hello {props.firstName} {props.lastName}
+                </Greeter>
+              )
+            }
+            ```
+
+            JSX + ES6
+            ```js
+            const MyComponent = props =>
+              <Greeter>
+                Hello {props.firstName} {props.lastName}
+              </Greeter>
+            ```
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## Destructuring
+            ES5
+            ```js
+            var firstName = user.firstName
+            var lastName  = user.lastName
+            ```
+
+            ES6
+            ```js
+            const {
+              firstName: firstName,
+              lastName: lastName
+            } = user
+            ```
+            or even better...
+            ```js
+            const { firstName, lastName } = user
+            ```
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## Destructuring in JSX
+            ```
+            const MyComponent = (props) =>
+              <Greeter>
+                Hello {props.firstName} {props.lastName}
+              </Greeter>
+            ```
+            or simply...
+            ```
+            const MyComponent = (props) => {
+              const { firstName, lastName } = props
+              return
+                <Greeter>
+                  Hello {firstName} {lastName}
+                </Greeter>
+            }
+            ```
+            alternately...
+            ```
+            const MyComponent = ({ firstName, lastName }) => (
+              <Greeter>
+                Hello {firstName} {lastName}
+              </Greeter>
+            )
+            ```
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## [Proposed] rest operator
+            ES5
+            ```js
+            var firstName = user.firstName
+            var lastName  = user.lastName
+            var details   = _.omit(user, ['firstName', 'lastName'])
+            ```
+
+            ES6
+            ```js
+            const { firstName, lastName, ...details } = user
+            ```
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## Rest operator in JSX
+            ```js
+            const MyComponent = ({firstName, lastName, age, favoriteColor}) =>
+              <Greeter age={age}, favoriteColor={favoriteColor} >
+                Hello {firstName} {lastName}
+              </Greeter>
+            ```
+            or simply...
+            ```js
+            const MyComponent = ({firstName, lastName, ...details}) =>
+              <Greeter {...details} >
+                Hello {firstName} {lastName}
+              </Greeter>
+            ```
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## Enhanced object literals
+            ES5
+            ```js
+            var user = {}
+            user.firstName = firstName
+            user.lastName  = lastName
+            ```
+
+            ES6
+            ```js
+            const user = {
+              firstName: firstName,
+              lastName:  lastName
+            }
+            ```
+            even better...
+            ```js
+            const user = { firstName, lastName }
+            ```
+            Notice similarity with object destructuring
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## Enhanced object literals in JSX:
+            ```html
+            <Greeter age={age}, favoriteColor={favoriteColor} />
+            ```
+            or simply...
+            ```html
+            <Greeter {...{age, favoriteColor}} />
+            ```
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## Defaults
+            ```js
+            const {
+              city:    city='Melbourne',
+              country: country='Australia'
+            } = location
+            ```
+            even better...
+            ```js
+            const { city='Melbourne', country='Australia'} = location
+            ```
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## Defaults in JSX
+            ```js
+            const MyComponent = props => <SubComponent {...props} />
+
+            MyComponent.defaultProps = { city: 'Melbourne', country: 'Australia' }
+            ```
+            or ...
+            ```js
+            const RequiredTextInput = props => {
+              const {city='Melbourne', country='Australia'} = props
+              return <SubComponent {...{city, country}} />
+            }
+            ```
+            alternately...
+            ```js
+            const RequiredTextInput = ({city='Melbourne', country='Australia'}) =>
+              <SubComponent {...{city, country}} />
+            ```
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-yellow" data-markdown>
+          <script type="text/template">
+            ## In short
+            * JSX DSL makes building tree structure of virtual DOM easy
+            * ES6 and other proposed standards makes it even easier
+              * Plus good for other non-JSX capabilities
+          </script>
+        </section>
+
+        <section data-state="dius-title dius-yellow">
+          <h2>Thank you!</h2>
+        </section>
+
+        <section data-state="dius-title dius-orange">
+          <h1>Bonus</h1>
+          <h2>You can't give a talk on JS and not write your slides in JS</h2>
+        </section>
+
+        <section data-state="dius-body dius-orange">
+          <h2>Reveal.js</h2>
+          <ul>
+            <li>Fork with DiUS themes: <a href="https://github.com/DiUS/reveal.js.git">https://github.com/DiUS/reveal.js.git</a></li>
+          </ul>
+
+          <pre><code data-noescape>
+&lt;section data-state="dius-title dius-orange"&gt;
+  &lt;h1&gt;Bonus&lt;/h1&gt;
+  &lt;h2&gt;You can't give a talk on JS and not write your slides in JS&lt;/h2&gt;
+&lt;/section&gt;
+
+&lt;section data-state="dius-body dius-orange" data-markdown&gt;
+  &lt;script type="text/template"&gt;
+    ## Reveal.js
+    * Fork with DiUS themes: [GitHub](https://github.com/DiUS/reveal.js.git)
+  &lt;/script&gt;
+&lt;/section&gt;
+          </code></pre>
+        </section>
+
+        <section data-state="dius-body dius-orange" data-markdown>
+          <script type="text/template">
+            ## Styleguide
+            * Noticed the colours on sidebar changed in different sections
+              * http://styleguide.dius.com.au/colour.html
+          </script>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <section data-state="dius-title dius-green">
+          <h1>Virtual DOM</h1>
+        </section>
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## Why
+            * DOM manipulations expensive
+            * Maintain off-screen virtual DOM, regularly sync with real DOM
+            * Batched updates
+            * But tree comparison is O(n^3)!
+
+            ![Trees](https://facebook.github.io/react/img/docs/should-component-update.png)
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## Component lifecycle
+            * Using heuristics, reduce complexity to O(n)
+              * Same class => same tree, different class => different tree
+              * Same key => same tree, different key => different tree
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## Forcing updates
+            * Change the key
+            * Calling `this.forceUpdate()`
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## Preventing updates
+            * Explicitly defining `shouldComponentUpdate()`, use `PureRenderMixin`
+            * Stateless functional components
+          </script>
+        </section>
+
+        <section data-state="dius-title dius-yellow">
+          <h1>Component patterns</h1>
+        </section>
+
+        <section data-state="dius-body dius-yellow" data-markdown>
+          <script type="text/template">
+            ## Styling components
+            ```
+            const SaveIcon    = () => <span className="fa fa-save" />
+            const TrashIcon   = () => <span className="fa fa-trash" />
+
+            const MyComponent = ({a, b}) => (
+              <div>
+                <span>{a}{b}</span>
+              </div>
+            )
+            ```
+            * Typically pure leaf or layout components
+            * CSS classes/styling should go in here, and no where else
+            * Libraries like MDL offer this
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-yellow" data-markdown>
+          <script type="text/template">
+            ## Structural components
+            * Defines core business logic, component hierarchy, callback functions
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-yellow" data-markdown>
+          <script type="text/template">
+            ## Wrapper to apply props
+
+            ```
+            const MyInput = props => <input {...props} />
+            MyInput.defaultProps = { type: 'text', required: true }
+
+            MyComponent = () => (
+              <div>
+                <MyInput name="firstName" placeholder="First name" />
+                <MyInput name="lastName"  placeholder="Last name" />
+                <MyInput name="color"     placeholder="Favourite color" />
+              </div>
+            )
+            ```
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-yellow" data-markdown>
+          <script type="text/template">
+            ## Wrapper to connect to global store
+            ```
+            class WrappedComponent extends React.Component {
+              componentWillMount() {
+                setupStore()
+              }
+
+              componentWillUnMount() {
+                teardownStore()
+              }
+
+              shouldComponentUpdate() {
+                return storeShallowCompare()
+              }
+
+              render() {
+                <UnderlyingBusinessLogic someProp={getStoreState()} />
+              }
+            }
+
+            export default WrappedComponent
+            ```
+            * Boilerplate to glue store and structural components
+            * Does not need to be root component; any intermediate component may be mapped to store directly
+            * Used in conjunction with Rails, for example
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-yellow" data-markdown>
+          <script type="text/template">
+            ## Wrapper components: Redux
+            ```
+            import { connect } from 'react-redux'
+
+            class WrappedComponent extends React.Component {
+              render() {
+                const { myProp } = this.props // auto-wired by connect()
+                <UnderlyingBusinessLogic someProp={myProp} />
+              }
+            }
+
+            const mapStateToProps = state => (
+              { myProp: transformFromStore(state) }
+            )
+
+            export default connect(mapStateToProps)(WrappedComponent)
+            ```
+
+            * Redux responsible for responding to changes, and triggering re-renders.
+            * Flux pattern
+          </script>
+        </section>
+
+        <section data-state="dius-title dius-orange">
+          <h1>Storing state</h1>
+          <h2>a.k.a. scaling React</h2>
+        </section>
+
+        <section data-state="dius-body dius-orange" data-markdown>
+          <script type="text/template">
+            ## State in React components
+            * `React.Children` and `React.cloneElement` allow parent to intercept & modify child (parent-child)
+            * `onChange()` callback allows child to notify parent of events (child-parent)
+
+            ```
+            <Form initialState={data} onSubmit={data => doUpdate(data)}>
+              <Input name="field1" label="Fabulous field" />
+              <Input name="field2" label="Fantastic field" />
+            </Form>
+            ```
+            * Effectively create two-way binding
+            * Useful for simple cases, but can quickly get complicated in deeply nested hierarchy
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-orange" data-markdown>
+          <script type="text/template">
+            ## React `<input/>`
+            ```
+            const Input = ({name, label, ...attrs}) => (
+              <div>
+                <label for={name}>{label}</label>
+                <input {...{name, ...attrs}} />
+              </div>
+            )
+            ```
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-orange" data-markdown>
+          <script type="text/template">
+            ## React `<form />`
+            ```
+            class Form extends React.Component {
+              constructor(props) {
+                super(props)
+                this.state          = props.initialState
+                this.renderChildren = this.renderChildren.bind(this)
+              }
+
+              render() {
+                return (
+                  <form onSubmit={e => {e.preventDefault; this.props.onSubmit(this.state)}}>
+                    {this.renderChildren()}
+                  </form>
+                )
+              }
+
+              renderChildren() {
+                return React.Children.map(this.props.children, child => {
+                  if (child.type === Input) {
+                    const { name } = child.props
+                    return React.cloneElement(child, {
+                      value: this.state[name],
+                      onChange: e => this.setState({[name]: e.target.value})
+                    })
+                  } else
+                    return child // unmodified child
+                })
+              }
+            }
+            ```
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-orange" data-markdown>
+          <script type="text/template">
+            ## State in global store
+            * Flux pattern: store manages action dispatch & refreshes components on update
+            * React components more pure, view only
+
+            ```
+            import { connect } from 'react-redux'
+
+            class WrappedComponent extends React.Component {
+              render() {
+                const { myProp } = this.props // auto-wired by connect()
+                <UnderlyingBusinessLogic someProp={myProp} />
+              }
+            }
+
+            const mapStateToProps = state => (
+              { myProp: transformFromStore(state) }
+            )
+
+            export default connect(mapStateToProps)(WrappedComponent)
+            ```
+          </script>
+        </section>
+
+        <section data-state="dius-title dius-lilac">
+          <h1>Server side rendering</h1>
+        </section>
+
+        <section data-state="dius-body dius-lilac" data-markdown>
+          <script type="text/template">
+            ## Sync vs async
+          </script>
+        </section>
+
+        <section data-state="dius-title dius-aqua">
+          <h1>Unit testing</h1>
+        </section>
+
+        <section data-state="dius-body dius-aqua" data-markdown>
+          <script type="text/template">
+            ## Store mutations
+          </script>
+        </section>
+
+        <section data-state="dius-title">
+          <h1>React + ES6 ought to be enough for anybody</h1>
+          <h2>Thank you!</h2>
+        </section>
+      </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/configuration.js"></script>
+  </body>
+</html>
