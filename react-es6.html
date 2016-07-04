@@ -293,14 +293,120 @@
           </script>
         </section>
 
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ### Class extends vs React.createClass
+            ```js
+
+              const Contacts = React.createClass({
+                getInitialState () {
+                  return { name: 'dean' }
+                },
+
+                render() {
+                  return <input onClick={this.onClick} />
+                }
+              })
+
+            ```
+            or ...
+            ```js
+
+              class Contacts extends React.Component {
+                constructor(props) {
+                  super(props)
+                  this.state = { name: 'dean' }
+                }
+
+                render() {
+                  return <input onClick={::this.onClick} />
+                }
+              }
+            ```
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## Unit Testing React Components
+
+            ### Who needs unit testing?
+          </script>
+        </section>
+
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## Unit Testing React Components
+
+            ### Who needs unit testing?
+
+            * OK then, have a look at at the 'Enzyme' package
+          </script>
+        </section>
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## State Manangement
+
+            * First there were only props and state
+            * There there was flux
+            * Then there was reflux, and lots of others
+            * There there was redux
+            * But they all seem to be a variation of reactive patterns
+            </script>
+        </section>
+
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## RxJS Reactive extensions
+
+            * No stores
+            * Only stream of data
+            * With subscribers and publishers
+
+            (aligns with standard ES generators and iterators)
+          </script>
+        </section>
+
+
+        <section data-state="dius-body dius-green" data-markdown>
+          <script type="text/template">
+            ## RxJS Reactive extensions
+
+            Compose your data:
+            ```js
+              intent = source::fetch()::replayLast().map( p => { name: p.name, age: p.name })
+            ```
+
+            Wire events:
+            ```js
+              onClick(personId) {
+                subject.next(personId)
+              }
+            ```
+
+            And subscribe in components:
+            ```js
+              componentWillMount() {
+                unsub = intent.subscribe(t => this.setState(t))
+              }
+            ```
+          </script>
+        </section>
+
         <section data-state="dius-body dius-yellow" data-markdown>
           <script type="text/template">
             ## In short
             * JSX DSL makes building tree structure of virtual DOM easy
             * ES6 and other proposed standards makes it even easier
               * Plus good for other non-JSX capabilities
+            * RxJs (and the upcoming ES draft proposals) allow easy data composition
+              * for both server-side and client-side rendering
           </script>
         </section>
+
 
         <section data-state="dius-title dius-yellow">
           <h2>Thank you!</h2>
