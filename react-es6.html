@@ -24,8 +24,8 @@
     <div class="reveal">
 
       <div class="slides">
-        <section data-state="dius-title">
-          <h2>Dean & Voon's excellent adventure in React and ES6</h2>
+        <section data-background="http://seveninchesofyourtime.com/wp-content/uploads/2014/08/billted4.jpg">
+          <h2 style="color:#314B84">Dean & Voon's excellent adventure in React and ES6</h2>
         </section>
 
         <section data-state="dius-body dius-blue" data-markdown>
@@ -38,13 +38,13 @@
         <section data-state="dius-body dius-blue" data-markdown>
           <script type="text/template">
             ## React with JSX syntax
-            JSX looks like HTML, transpiles to JS
+            JSX looks like HTML
             ```html
             <MyComponent option={1} parameter={2}>
               Child contents
             </MyComponent>
             ```
-            becomes
+            transpiles to JS...
             ```js
             React.createElement(
               MyComponent,
@@ -79,11 +79,14 @@
           <script type="text/template">
             ## ES6
             * Also known as ECMAScript 2015
-            * Has lots of stuff, but focus on features that complement JSX
+            * Has lots of stuff, but focus on features that complement React, in particular JSX
             * Also use other draft/proposed capabilities:
               * eg. object rest + spread [https://github.com/sebmarkbage/ecmascript-rest-spread]
               * use with caution, as it may change!
           </script>
+        </section>
+
+        <section data-background="http://seveninchesofyourtime.com/wp-content/uploads/2014/08/billted8.jpg">
         </section>
 
         <section data-state="dius-body dius-green" data-markdown>
@@ -237,13 +240,13 @@
             ```js
             const user = { firstName, lastName }
             ```
-            Notice similarity with object destructuring
+            Notice symmetry with object destructuring
           </script>
         </section>
 
         <section data-state="dius-body dius-green" data-markdown>
           <script type="text/template">
-            ## Enhanced object literals in JSX:
+            ## Enhanced object literals in JSX
             ```html
             <Greeter age={age}, favoriteColor={favoriteColor} />
             ```
@@ -297,57 +300,49 @@
           <script type="text/template">
             ### Class extends vs React.createClass
             ```js
+            const Contacts = React.createClass({
+              getInitialState () {
+                return { name: 'dean' }
+              },
 
-              const Contacts = React.createClass({
-                getInitialState () {
-                  return { name: 'dean' }
-                },
-
-                render() {
-                  return <input onClick={this.onClick} />
-                }
-              })
-
+              render() {
+                return <input onClick={this.onClick} />
+              }
+            })
             ```
             or ...
+
             ```js
-
-              class Contacts extends React.Component {
-                constructor(props) {
-                  super(props)
-                  this.state = { name: 'dean' }
-                }
-
-                render() {
-                  return <input onClick={::this.onClick} />
-                }
+            class Contacts extends React.Component {
+              constructor(props) {
+                super(props)
+                this.state = { name: 'dean' }
               }
+
+              render() {
+                return <input onClick={this.onClick} />
+              }
+            }
             ```
           </script>
         </section>
 
-        <section data-state="dius-body dius-green" data-markdown>
-          <script type="text/template">
-            ## Unit Testing React Components
+        <section data-background="http://seveninchesofyourtime.com/wp-content/uploads/2014/08/billted1.jpg">
+        </section>
 
-            ### Who needs unit testing?
+        <section data-state="dius-body dius-yellow">
+          <h2>Unit Testing React Components</h2>
+          <h3>Who needs unit testing?</h3>
+          <p class="fragment">OK then, have a look at at the 'Enzyme' package</p>
           </script>
         </section>
 
-
-        <section data-state="dius-body dius-green" data-markdown>
-          <script type="text/template">
-            ## Unit Testing React Components
-
-            ### Who needs unit testing?
-
-            * OK then, have a look at at the 'Enzyme' package
-          </script>
+        <section data-background="http://www.liketotally80s.com/wp-content/uploads/2015/05/bill-ted-leaders.jpg">
         </section>
 
-        <section data-state="dius-body dius-green" data-markdown>
+        <section data-state="dius-body dius-orange" data-markdown>
           <script type="text/template">
-            ## State Manangement
+            ## State Management
 
             * First there were only props and state
             * There there was flux
@@ -357,8 +352,7 @@
             </script>
         </section>
 
-
-        <section data-state="dius-body dius-green" data-markdown>
+        <section data-state="dius-body dius-orange" data-markdown>
           <script type="text/template">
             ## RxJS Reactive extensions
 
@@ -370,33 +364,32 @@
           </script>
         </section>
 
-
-        <section data-state="dius-body dius-green" data-markdown>
+        <section data-state="dius-body dius-orange" data-markdown>
           <script type="text/template">
             ## RxJS Reactive extensions
 
             Compose your data:
             ```js
-              intent = source::fetch()::replayLast().map( p => { name: p.name, age: p.name })
+            intent = source::fetch()::replayLast().map( p => { name: p.name, age: p.name })
             ```
 
             Wire events:
             ```js
-              onClick(personId) {
-                subject.next(personId)
-              }
+            onClick(personId) {
+              subject.next(personId)
+            }
             ```
 
             And subscribe in components:
             ```js
-              componentWillMount() {
-                unsub = intent.subscribe(t => this.setState(t))
-              }
+            componentWillMount() {
+              unsub = intent.subscribe(t => this.setState(t))
+            }
             ```
           </script>
         </section>
 
-        <section data-state="dius-body dius-yellow" data-markdown>
+        <section data-state="dius-body dius-lilac" data-markdown>
           <script type="text/template">
             ## In short
             * JSX DSL makes building tree structure of virtual DOM easy
@@ -407,29 +400,26 @@
           </script>
         </section>
 
-
-        <section data-state="dius-title dius-yellow">
-          <h2>Thank you!</h2>
+        <section data-background="http://seveninchesofyourtime.com/wp-content/uploads/2014/08/billted3.jpg">
         </section>
 
-        <section data-state="dius-title dius-orange">
-          <h1>Bonus</h1>
-          <h2>You can't give a talk on JS and not write your slides in JS</h2>
+        <section data-state="dius-title dius-aqua">
+          <h2 style="color: white;">You can't give a talk on JS and not write your slides in JS</h2>
         </section>
 
-        <section data-state="dius-body dius-orange">
+        <section data-state="dius-body dius-aqua">
           <h2>Reveal.js</h2>
           <ul>
             <li>Fork with DiUS themes: <a href="https://github.com/DiUS/reveal.js.git">https://github.com/DiUS/reveal.js.git</a></li>
           </ul>
 
           <pre><code data-noescape>
-&lt;section data-state="dius-title dius-orange"&gt;
+&lt;section data-state="dius-title dius-aqua"&gt;
   &lt;h1&gt;Bonus&lt;/h1&gt;
   &lt;h2&gt;You can't give a talk on JS and not write your slides in JS&lt;/h2&gt;
 &lt;/section&gt;
 
-&lt;section data-state="dius-body dius-orange" data-markdown&gt;
+&lt;section data-state="dius-body dius-aqua" data-markdown&gt;
   &lt;script type="text/template"&gt;
     ## Reveal.js
     * Fork with DiUS themes: [GitHub](https://github.com/DiUS/reveal.js.git)
@@ -438,16 +428,18 @@
           </code></pre>
         </section>
 
-        <section data-state="dius-body dius-orange" data-markdown>
+        <section data-state="dius-body dius-aqua" data-markdown>
           <script type="text/template">
             ## Styleguide
-            * Noticed the colours on sidebar changed in different sections
+            * Notice the colours on sidebar changed in different sections
               * http://styleguide.dius.com.au/colour.html
+            * Responsive layouts
+            * Remote control with Socket.io
           </script>
         </section>
 
+
         <section data-background="https://media.giphy.com/media/l4KhRsScQKgWZzqO4/giphy.gif">
-          <h1>Thank you</h1>
         </section>
 
 
